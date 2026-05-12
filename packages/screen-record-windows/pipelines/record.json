@@ -1,0 +1,209 @@
+{
+  "id": "pl_0000rso",
+  "name": "Screen Record",
+  "nodes": [
+    {
+      "id": "v_0002e49",
+      "type": "gstVariable",
+      "position": {
+        "x": 40,
+        "y": 40
+      },
+      "data": {
+        "varName": "location",
+        "label": "Output file",
+        "valueKind": "string",
+        "value": "/tmp/screen-record.mp4"
+      }
+    },
+    {
+      "id": "v_0000m2m",
+      "type": "gstVariable",
+      "position": {
+        "x": 40,
+        "y": 100
+      },
+      "data": {
+        "varName": "kbps",
+        "label": "Video Bitrate (kbps)",
+        "valueKind": "number",
+        "value": 6000
+      }
+    },
+    {
+      "id": "v_0003qnb",
+      "type": "gstVariable",
+      "position": {
+        "x": 40,
+        "y": 160
+      },
+      "data": {
+        "varName": "monitorIndex",
+        "label": "Monitor index",
+        "valueKind": "number",
+        "value": 0
+      }
+    },
+    {
+      "id": "n_0003pac",
+      "type": "gstElement",
+      "position": {
+        "x": 260,
+        "y": 80
+      },
+      "data": {
+        "elementName": "d3d11screencapturesrc",
+        "instanceName": "d3d11screencapturesrc0",
+        "properties": {
+          "show-cursor": true
+        }
+      }
+    },
+    {
+      "id": "n_00028rp",
+      "type": "gstElement",
+      "position": {
+        "x": 460,
+        "y": 80
+      },
+      "data": {
+        "elementName": "videoconvert",
+        "instanceName": "videoconvert0",
+        "properties": {}
+      }
+    },
+    {
+      "id": "n_0003p7e",
+      "type": "gstElement",
+      "position": {
+        "x": 640,
+        "y": 80
+      },
+      "data": {
+        "elementName": "x264enc",
+        "instanceName": "x264enc0",
+        "properties": {
+          "tune": "zerolatency",
+          "speed-preset": "veryfast",
+          "bitrate": 6000
+        }
+      }
+    },
+    {
+      "id": "n_000141f",
+      "type": "gstElement",
+      "position": {
+        "x": 840,
+        "y": 80
+      },
+      "data": {
+        "elementName": "mp4mux",
+        "instanceName": "mp4mux0",
+        "properties": {
+          "faststart": true
+        }
+      }
+    },
+    {
+      "id": "n_0000o1s",
+      "type": "gstElement",
+      "position": {
+        "x": 1040,
+        "y": 80
+      },
+      "data": {
+        "elementName": "filesink",
+        "instanceName": "filesink0",
+        "properties": {
+          "location": "/tmp/screen-record.mp4"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_0004hch",
+      "source": "n_0003pac",
+      "target": "n_00028rp",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "sourcePad": "src",
+        "targetPad": "sink",
+        "edgeKind": "stream"
+      }
+    },
+    {
+      "id": "e_0001pdi",
+      "source": "n_00028rp",
+      "target": "n_0003p7e",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "sourcePad": "src",
+        "targetPad": "sink",
+        "edgeKind": "stream"
+      }
+    },
+    {
+      "id": "e_0002ywv",
+      "source": "n_0003p7e",
+      "target": "n_000141f",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:video_%u",
+      "data": {
+        "sourcePad": "src",
+        "targetPad": "video_%u",
+        "edgeKind": "stream"
+      }
+    },
+    {
+      "id": "e_000362k",
+      "source": "n_000141f",
+      "target": "n_0000o1s",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "sourcePad": "src",
+        "targetPad": "sink",
+        "edgeKind": "stream"
+      }
+    },
+    {
+      "id": "e_0002kal",
+      "source": "v_0002e49",
+      "target": "n_0000o1s",
+      "sourceHandle": "out",
+      "targetHandle": "prop:location",
+      "data": {
+        "bindingProperty": "location",
+        "edgeKind": "binding"
+      },
+      "className": "binding"
+    },
+    {
+      "id": "e_00018cy",
+      "source": "v_0000m2m",
+      "target": "n_0003p7e",
+      "sourceHandle": "out",
+      "targetHandle": "prop:bitrate",
+      "data": {
+        "bindingProperty": "bitrate",
+        "edgeKind": "binding"
+      },
+      "className": "binding"
+    },
+    {
+      "id": "e_0001udn",
+      "source": "v_0003qnb",
+      "target": "n_0003pac",
+      "sourceHandle": "out",
+      "targetHandle": "prop:monitor-index",
+      "data": {
+        "bindingProperty": "monitor-index",
+        "edgeKind": "binding"
+      },
+      "className": "binding"
+    }
+  ]
+}

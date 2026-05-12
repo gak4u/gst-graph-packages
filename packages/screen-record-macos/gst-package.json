@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "screen-record-macos",
+  "name": "Screen Record Macos",
+  "version": "1.0.0",
+  "summary": "Record the screen with AVFoundation, encode H.264, and write an MP4. macOS only.",
+  "author": {
+    "name": "gak4u",
+    "url": "https://github.com/gak4u"
+  },
+  "tags": [
+    "screen",
+    "record",
+    "mp4",
+    "macos"
+  ],
+  "license": "PolyForm-NC-1.0",
+  "requires": {
+    "gstreamer": ">=1.18",
+    "elements": [
+      "avfvideosrc",
+      "videoconvert",
+      "x264enc",
+      "mp4mux",
+      "filesink"
+    ]
+  },
+  "pipelines": [
+    {
+      "file": "pipelines/record.json",
+      "name": "Screen Record"
+    }
+  ],
+  "variables": [
+    {
+      "varName": "location",
+      "label": "Output file",
+      "default": "/tmp/screen-record.mp4"
+    },
+    {
+      "varName": "kbps",
+      "label": "Video Bitrate (kbps)",
+      "default": 6000
+    },
+    {
+      "varName": "screenIndex",
+      "label": "Screen / display index",
+      "default": 0
+    }
+  ]
+}

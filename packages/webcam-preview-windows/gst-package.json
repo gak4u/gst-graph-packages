@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "webcam-preview-windows",
+  "name": "Webcam Preview Windows",
+  "version": "1.0.0",
+  "summary": "Open a webcam via DirectShow and show it in a preview window. Windows only.",
+  "author": {
+    "name": "gak4u",
+    "url": "https://github.com/gak4u"
+  },
+  "tags": [
+    "webcam",
+    "preview",
+    "windows",
+    "kernel-streaming"
+  ],
+  "license": "PolyForm-NC-1.0",
+  "requires": {
+    "gstreamer": ">=1.18",
+    "elements": [
+      "ksvideosrc",
+      "videoconvert",
+      "autovideosink"
+    ]
+  },
+  "pipelines": [
+    {
+      "file": "pipelines/preview.json",
+      "name": "Webcam Preview"
+    }
+  ],
+  "variables": [
+    {
+      "varName": "deviceIndex",
+      "label": "Camera device index",
+      "default": 0
+    }
+  ]
+}

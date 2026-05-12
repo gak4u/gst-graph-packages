@@ -1,0 +1,254 @@
+{
+  "id": "pl_0001syz",
+  "name": "RTMP Livestream",
+  "nodes": [
+    {
+      "id": "v_00040vh",
+      "type": "gstVariable",
+      "position": {
+        "x": 40,
+        "y": 40
+      },
+      "data": {
+        "varName": "host",
+        "label": "RTMP Host",
+        "valueKind": "string",
+        "value": "live.twitch.tv/app"
+      }
+    },
+    {
+      "id": "v_0000x8i",
+      "type": "gstVariable",
+      "position": {
+        "x": 40,
+        "y": 100
+      },
+      "data": {
+        "varName": "streamKey",
+        "label": "Stream Key",
+        "valueKind": "string",
+        "value": "",
+        "hidden": false
+      }
+    },
+    {
+      "id": "v_0002z3v",
+      "type": "gstVariable",
+      "position": {
+        "x": 40,
+        "y": 160
+      },
+      "data": {
+        "varName": "kbps",
+        "label": "Video Bitrate (kbps)",
+        "valueKind": "number",
+        "value": 2500
+      }
+    },
+    {
+      "id": "n_0003elk",
+      "type": "gstElement",
+      "position": {
+        "x": 280,
+        "y": 40
+      },
+      "data": {
+        "elementName": "videotestsrc",
+        "instanceName": "video0",
+        "properties": {
+          "is-live": true,
+          "pattern": "smpte"
+        }
+      }
+    },
+    {
+      "id": "n_0000t5l",
+      "type": "gstElement",
+      "position": {
+        "x": 460,
+        "y": 40
+      },
+      "data": {
+        "elementName": "videoconvert",
+        "instanceName": "videoconvert0",
+        "properties": {}
+      }
+    },
+    {
+      "id": "n_0003ljy",
+      "type": "gstElement",
+      "position": {
+        "x": 640,
+        "y": 40
+      },
+      "data": {
+        "elementName": "x264enc",
+        "instanceName": "x264enc0",
+        "properties": {
+          "tune": "zerolatency",
+          "speed-preset": "veryfast",
+          "bitrate": 2500
+        }
+      }
+    },
+    {
+      "id": "n_0002rwn",
+      "type": "gstElement",
+      "position": {
+        "x": 880,
+        "y": 80
+      },
+      "data": {
+        "elementName": "flvmux",
+        "instanceName": "flvmux0",
+        "properties": {
+          "streamable": true
+        }
+      }
+    },
+    {
+      "id": "n_00031no",
+      "type": "gstElement",
+      "position": {
+        "x": 1080,
+        "y": 80
+      },
+      "data": {
+        "elementName": "rtmpsink",
+        "instanceName": "rtmpsink0",
+        "properties": {
+          "location": "rtmp://live.twitch.tv/app/REPLACE_ME"
+        }
+      }
+    },
+    {
+      "id": "n_00029l1",
+      "type": "gstElement",
+      "position": {
+        "x": 280,
+        "y": 200
+      },
+      "data": {
+        "elementName": "audiotestsrc",
+        "instanceName": "audio0",
+        "properties": {
+          "is-live": true,
+          "wave": "silence"
+        }
+      }
+    },
+    {
+      "id": "n_00047sq",
+      "type": "gstElement",
+      "position": {
+        "x": 460,
+        "y": 200
+      },
+      "data": {
+        "elementName": "voaacenc",
+        "instanceName": "voaacenc0",
+        "properties": {
+          "bitrate": 128000
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_0004pqr",
+      "source": "n_0003elk",
+      "target": "n_0000t5l",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "sourcePad": "src",
+        "targetPad": "sink",
+        "edgeKind": "stream"
+      }
+    },
+    {
+      "id": "e_0001274",
+      "source": "n_0000t5l",
+      "target": "n_0003ljy",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "sourcePad": "src",
+        "targetPad": "sink",
+        "edgeKind": "stream"
+      }
+    },
+    {
+      "id": "e_0004t9t",
+      "source": "n_0003ljy",
+      "target": "n_0002rwn",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:video",
+      "data": {
+        "sourcePad": "src",
+        "targetPad": "video",
+        "edgeKind": "stream"
+      }
+    },
+    {
+      "id": "e_0002weu",
+      "source": "n_00029l1",
+      "target": "n_00047sq",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "sourcePad": "src",
+        "targetPad": "sink",
+        "edgeKind": "stream"
+      }
+    },
+    {
+      "id": "e_00022e7",
+      "source": "n_00047sq",
+      "target": "n_0002rwn",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:audio",
+      "data": {
+        "sourcePad": "src",
+        "targetPad": "audio",
+        "edgeKind": "stream"
+      }
+    },
+    {
+      "id": "e_0001nbw",
+      "source": "n_0002rwn",
+      "target": "n_00031no",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "sourcePad": "src",
+        "targetPad": "sink",
+        "edgeKind": "stream"
+      }
+    },
+    {
+      "id": "e_0004onx",
+      "source": "v_0002z3v",
+      "target": "n_0003ljy",
+      "sourceHandle": "out",
+      "targetHandle": "prop:bitrate",
+      "data": {
+        "bindingProperty": "bitrate",
+        "edgeKind": "binding"
+      },
+      "className": "binding"
+    },
+    {
+      "id": "e_0002d6a",
+      "source": "v_00040vh",
+      "target": "n_00031no",
+      "sourceHandle": "out",
+      "targetHandle": "prop:location",
+      "data": {
+        "bindingProperty": "location",
+        "edgeKind": "binding"
+      },
+      "className": "binding"
+    }
+  ]
+}

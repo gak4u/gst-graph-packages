@@ -1,0 +1,99 @@
+{
+  "id": "pl_00037nf",
+  "name": "Webcam Preview",
+  "nodes": [
+    {
+      "id": "v_0003yy8",
+      "type": "gstVariable",
+      "position": {
+        "x": 40,
+        "y": 60
+      },
+      "data": {
+        "varName": "device",
+        "label": "V4L2 device path",
+        "valueKind": "string",
+        "value": "/dev/video0"
+      }
+    },
+    {
+      "id": "n_0003xq9",
+      "type": "gstElement",
+      "position": {
+        "x": 240,
+        "y": 80
+      },
+      "data": {
+        "elementName": "v4l2src",
+        "instanceName": "v4l2src0",
+        "properties": {}
+      }
+    },
+    {
+      "id": "n_0003d0m",
+      "type": "gstElement",
+      "position": {
+        "x": 460,
+        "y": 80
+      },
+      "data": {
+        "elementName": "videoconvert",
+        "instanceName": "videoconvert0",
+        "properties": {}
+      }
+    },
+    {
+      "id": "n_00024xb",
+      "type": "gstElement",
+      "position": {
+        "x": 660,
+        "y": 80
+      },
+      "data": {
+        "elementName": "autovideosink",
+        "instanceName": "autovideosink0",
+        "properties": {
+          "sync": false
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_0000iwc",
+      "source": "n_0003xq9",
+      "target": "n_0003d0m",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "sourcePad": "src",
+        "targetPad": "sink",
+        "edgeKind": "stream"
+      }
+    },
+    {
+      "id": "e_0003lpp",
+      "source": "n_0003d0m",
+      "target": "n_00024xb",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "sourcePad": "src",
+        "targetPad": "sink",
+        "edgeKind": "stream"
+      }
+    },
+    {
+      "id": "e_00041he",
+      "source": "v_0003yy8",
+      "target": "n_0003xq9",
+      "sourceHandle": "out",
+      "targetHandle": "prop:device",
+      "data": {
+        "bindingProperty": "device",
+        "edgeKind": "binding"
+      },
+      "className": "binding"
+    }
+  ]
+}

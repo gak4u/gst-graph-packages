@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "rtmp-livestream",
+  "name": "RTMP Livestream",
+  "version": "1.0.0",
+  "summary": "Encode video + audio with x264 / AAC and push to any RTMP endpoint (Twitch, YouTube, Restream).",
+  "author": {
+    "name": "gak4u",
+    "url": "https://github.com/gak4u"
+  },
+  "tags": [
+    "livestream",
+    "rtmp",
+    "x264",
+    "twitch",
+    "youtube"
+  ],
+  "license": "PolyForm-NC-1.0",
+  "requires": {
+    "gstreamer": ">=1.18",
+    "elements": [
+      "videotestsrc",
+      "videoconvert",
+      "x264enc",
+      "flvmux",
+      "audiotestsrc",
+      {
+        "name": "voaacenc",
+        "rationale": "AAC audio encoder. Some distros ship it as a separate plugin pack."
+      },
+      "rtmpsink"
+    ]
+  },
+  "optional": {
+    "elements": [
+      {
+        "name": "nvh264enc",
+        "rationale": "Hardware H.264 encoder on NVIDIA GPUs."
+      }
+    ]
+  },
+  "pipelines": [
+    {
+      "file": "pipelines/livestream.json",
+      "name": "RTMP Livestream"
+    }
+  ],
+  "variables": [
+    {
+      "varName": "host",
+      "label": "RTMP Host",
+      "default": "live.twitch.tv/app"
+    },
+    {
+      "varName": "streamKey",
+      "label": "Stream Key",
+      "secret": true
+    },
+    {
+      "varName": "kbps",
+      "label": "Video Bitrate (kbps)",
+      "default": 2500
+    }
+  ]
+}

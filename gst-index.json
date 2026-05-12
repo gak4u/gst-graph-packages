@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "packages": [
+    {
+      "id": "rtmp-livestream",
+      "path": "packages/rtmp-livestream"
+    },
+    {
+      "id": "webcam-preview-macos",
+      "path": "packages/webcam-preview-macos"
+    },
+    {
+      "id": "webcam-preview-linux",
+      "path": "packages/webcam-preview-linux"
+    },
+    {
+      "id": "webcam-preview-windows",
+      "path": "packages/webcam-preview-windows"
+    },
+    {
+      "id": "screen-record-macos",
+      "path": "packages/screen-record-macos"
+    },
+    {
+      "id": "screen-record-linux",
+      "path": "packages/screen-record-linux"
+    },
+    {
+      "id": "screen-record-windows",
+      "path": "packages/screen-record-windows"
+    }
+  ]
+}

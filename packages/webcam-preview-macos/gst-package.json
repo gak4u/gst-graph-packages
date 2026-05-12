@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "webcam-preview-macos",
+  "name": "Webcam Preview Macos",
+  "version": "1.0.0",
+  "summary": "Open the default webcam (AVFoundation) and show it in a preview window. macOS only.",
+  "author": {
+    "name": "gak4u",
+    "url": "https://github.com/gak4u"
+  },
+  "tags": [
+    "webcam",
+    "preview",
+    "macos",
+    "avfoundation"
+  ],
+  "license": "PolyForm-NC-1.0",
+  "requires": {
+    "gstreamer": ">=1.18",
+    "elements": [
+      "avfvideosrc",
+      "videoconvert",
+      "autovideosink"
+    ]
+  },
+  "pipelines": [
+    {
+      "file": "pipelines/preview.json",
+      "name": "Webcam Preview"
+    }
+  ],
+  "variables": [
+    {
+      "varName": "deviceIndex",
+      "label": "Camera device index",
+      "default": 0
+    }
+  ]
+}

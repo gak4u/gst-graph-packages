@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "webcam-preview-linux",
+  "name": "Webcam Preview Linux",
+  "version": "1.0.0",
+  "summary": "Open a V4L2 webcam and show it in a preview window. Linux only.",
+  "author": {
+    "name": "gak4u",
+    "url": "https://github.com/gak4u"
+  },
+  "tags": [
+    "webcam",
+    "preview",
+    "linux",
+    "v4l2"
+  ],
+  "license": "PolyForm-NC-1.0",
+  "requires": {
+    "gstreamer": ">=1.18",
+    "elements": [
+      "v4l2src",
+      "videoconvert",
+      "autovideosink"
+    ]
+  },
+  "pipelines": [
+    {
+      "file": "pipelines/preview.json",
+      "name": "Webcam Preview"
+    }
+  ],
+  "variables": [
+    {
+      "varName": "device",
+      "label": "V4L2 device path",
+      "default": "/dev/video0"
+    }
+  ]
+}

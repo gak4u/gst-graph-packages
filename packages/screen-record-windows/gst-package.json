@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "screen-record-windows",
+  "name": "Screen Record Windows",
+  "version": "1.0.0",
+  "summary": "Record the desktop with Direct3D11 screen capture, encode H.264, and write an MP4. Windows 10+.",
+  "author": {
+    "name": "gak4u",
+    "url": "https://github.com/gak4u"
+  },
+  "tags": [
+    "screen",
+    "record",
+    "mp4",
+    "windows",
+    "d3d11"
+  ],
+  "license": "PolyForm-NC-1.0",
+  "requires": {
+    "gstreamer": ">=1.18",
+    "elements": [
+      "d3d11screencapturesrc",
+      "videoconvert",
+      "x264enc",
+      "mp4mux",
+      "filesink"
+    ]
+  },
+  "pipelines": [
+    {
+      "file": "pipelines/record.json",
+      "name": "Screen Record"
+    }
+  ],
+  "variables": [
+    {
+      "varName": "location",
+      "label": "Output file",
+      "default": "/tmp/screen-record.mp4"
+    },
+    {
+      "varName": "kbps",
+      "label": "Video Bitrate (kbps)",
+      "default": 6000
+    },
+    {
+      "varName": "monitorIndex",
+      "label": "Monitor index",
+      "default": 0
+    }
+  ]
+}
