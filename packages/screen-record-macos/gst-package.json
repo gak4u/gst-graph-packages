@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "screen-record-macos",
-  "name": "Screen Record Macos",
+  "name": "Screen Record (macOS)",
   "version": "1.0.0",
-  "summary": "Record the screen with AVFoundation, encode H.264, and write an MP4. macOS only.",
+  "summary": "Record your Mac screen to an MP4 file. Pick the display, set a bitrate, and start.",
   "author": {
     "name": "gak4u",
     "url": "https://github.com/gak4u"
@@ -47,5 +47,6 @@
       "label": "Screen / display index",
       "default": 0
     }
-  ]
+  ],
+  "description": "Captures the entire screen via AVFoundation (the native macOS capture API), encodes with H.264 + AAC, and writes a self-contained MP4. Use the screen index variable to pick which display to record on multi-monitor setups (0 is the primary display). The output bitrate is configurable; defaults to 6 Mbps which is fine for documentation / demo recordings."
 }

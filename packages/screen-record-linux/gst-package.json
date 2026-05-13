@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "screen-record-linux",
-  "name": "Screen Record Linux",
+  "name": "Screen Record (Linux)",
   "version": "1.0.0",
-  "summary": "Record an X11 display with ximagesrc, encode H.264, and write an MP4. Linux (X11) only.",
+  "summary": "Record your X11 desktop to an MP4 file. Pick the display, set a bitrate, and start.",
   "author": {
     "name": "gak4u",
     "url": "https://github.com/gak4u"
@@ -48,5 +48,6 @@
       "label": "X11 display name",
       "default": ":0"
     }
-  ]
+  ],
+  "description": "Captures an X11 display via ximagesrc, encodes with H.264 + AAC, and writes a self-contained MP4. Point it at any DISPLAY (`:0` is the standard local display; `:0.1` for a secondary screen if your DE exposes them as separate X displays). Default bitrate is 6 Mbps, suitable for documentation / demo recordings. Wayland sessions need a different capture (not included in this package)."
 }

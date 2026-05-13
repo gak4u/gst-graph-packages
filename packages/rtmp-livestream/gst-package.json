@@ -3,7 +3,7 @@
   "id": "rtmp-livestream",
   "name": "RTMP Livestream",
   "version": "1.0.0",
-  "summary": "Encode video + audio with x264 / AAC and push to any RTMP endpoint (Twitch, YouTube, Restream).",
+  "summary": "Stream video + audio to Twitch, YouTube, or any RTMP service. One destination per install — use SRT → Multi RTMP for parallel fan-out.",
   "author": {
     "name": "gak4u",
     "url": "https://github.com/gak4u"
@@ -61,5 +61,6 @@
       "label": "Video Bitrate (kbps)",
       "default": 2500
     }
-  ]
+  ],
+  "description": "A simple template for going live. Picks a generated video source (so you can verify the pipeline works before pointing it at a real camera or screen), encodes with x264 + AAC, muxes to FLV, and pushes to an RTMP endpoint. Plug in your host + stream key after install. Designed as a starting point — once you've confirmed the connection works, swap the test source for a webcam, screen capture, or another media element."
 }

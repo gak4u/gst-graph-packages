@@ -3,8 +3,8 @@
   "id": "srt-multi-rtmp",
   "name": "SRT → Multi RTMP",
   "version": "1.0.0",
-  "summary": "Receive an SRT MPEG-TS stream and republish to multiple RTMP endpoints in parallel. Drive the destination list from an iterator table — pick the streaming service per row from a kv preset library.",
-  "description": "Listens for an SRT MPEG-TS input, demuxes video + audio, fans out through a tee into a loop group containing one prototype FLV branch (queue → flvmux → queue → rtmp2sink). The group iterates over a table of RTMP targets; each row picks a service (kv-resolved endpoint URL) plus a stream key, and the parameter template `${service}${key}` builds the final URL.",
+  "summary": "Take one SRT input and broadcast it to multiple RTMP destinations in parallel — YouTube + Twitch + Facebook + your own server, all at once.",
+  "description": "A multistreaming hub. Your OBS / FFmpeg / encoder sends one SRT stream to this pipeline; the pipeline fans it out to as many RTMP destinations as you list in a configuration table. Each row in the table picks one streaming service (from a built-in preset library of endpoints) plus your stream key for that service — the full RTMP URL is assembled automatically. Add a row to add a destination, remove a row to drop one; no rewiring required.",
   "author": {
     "name": "gak4u",
     "url": "https://github.com/gak4u"

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "webcam-preview-macos",
-  "name": "Webcam Preview Macos",
+  "name": "Webcam Preview (macOS)",
   "version": "1.0.0",
-  "summary": "Open the default webcam (AVFoundation) and show it in a preview window. macOS only.",
+  "summary": "Open your Mac's built-in or USB webcam and show it in a preview window. macOS only.",
   "author": {
     "name": "gak4u",
     "url": "https://github.com/gak4u"
@@ -35,5 +35,6 @@
       "label": "Camera device index",
       "default": 0
     }
-  ]
+  ],
+  "description": "Uses AVFoundation (the native macOS capture API) to open the camera. Set `deviceIndex` to pick which camera if you have multiple (0 = first listed). Includes the standard color-space conversion needed before macOS can display the video. macOS will prompt for camera permission the first time you run it."
 }

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "webcam-preview-windows",
-  "name": "Webcam Preview Windows",
+  "name": "Webcam Preview (Windows)",
   "version": "1.0.0",
-  "summary": "Open a webcam via DirectShow and show it in a preview window. Windows only.",
+  "summary": "Open a connected webcam and show it in a preview window. Windows only.",
   "author": {
     "name": "gak4u",
     "url": "https://github.com/gak4u"
@@ -35,5 +35,6 @@
       "label": "Camera device index",
       "default": 0
     }
-  ]
+  ],
+  "description": "Uses the Kernel Streaming / Media Foundation source on Windows to open a camera. Set `deviceIndex` to pick which camera if you have multiple. The first run may take a moment while Windows initializes the camera driver — subsequent runs are instant."
 }

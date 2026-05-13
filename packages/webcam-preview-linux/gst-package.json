@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "webcam-preview-linux",
-  "name": "Webcam Preview Linux",
+  "name": "Webcam Preview (Linux)",
   "version": "1.0.0",
-  "summary": "Open a V4L2 webcam and show it in a preview window. Linux only.",
+  "summary": "Open your USB / built-in webcam (V4L2) and show it in a preview window. Linux only.",
   "author": {
     "name": "gak4u",
     "url": "https://github.com/gak4u"
@@ -35,5 +35,6 @@
       "label": "V4L2 device path",
       "default": "/dev/video0"
     }
-  ]
+  ],
+  "description": "Uses V4L2 to read frames from the kernel webcam driver, converts color space, and displays the video. The `device` variable is the V4L2 device node path — typically `/dev/video0`, but if you have multiple cameras or a virtual camera setup, list them with `v4l2-ctl --list-devices` and pick the right one."
 }

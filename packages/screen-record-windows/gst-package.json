@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "screen-record-windows",
-  "name": "Screen Record Windows",
+  "name": "Screen Record (Windows)",
   "version": "1.0.0",
-  "summary": "Record the desktop with Direct3D11 screen capture, encode H.264, and write an MP4. Windows 10+.",
+  "summary": "Record your Windows desktop to an MP4 file. Pick the monitor, set a bitrate, and start.",
   "author": {
     "name": "gak4u",
     "url": "https://github.com/gak4u"
@@ -48,5 +48,6 @@
       "label": "Monitor index",
       "default": 0
     }
-  ]
+  ],
+  "description": "Captures the desktop via Direct3D11 (the GPU-accelerated Windows capture path), encodes with H.264 + AAC, and writes a self-contained MP4. The monitor index variable selects which display to record (0 = primary). Default bitrate is 6 Mbps. Requires Windows 10 or newer for the D3D11 capture element."
 }
