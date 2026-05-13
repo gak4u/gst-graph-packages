@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "srt-multi-rtmp",
+  "name": "SRT → Multi RTMP",
+  "version": "1.0.0",
+  "summary": "Receive an SRT MPEG-TS stream and republish to multiple RTMP endpoints in parallel. Drive the destination list from an iterator table — pick the streaming service per row from a kv preset library.",
+  "description": "Listens for an SRT MPEG-TS input, demuxes video + audio, fans out through a tee into a loop group containing one prototype FLV branch (queue → flvmux → queue → rtmp2sink). The group iterates over a table of RTMP targets; each row picks a service (kv-resolved endpoint URL) plus a stream key, and the parameter template `${service}${key}` builds the final URL.",
+  "author": {
+    "name": "gak4u",
+    "url": "https://github.com/gak4u"
+  },
+  "tags": [
+    "srt",
+    "rtmp",
+    "multi-output",
+    "fanout",
+    "restream",
+    "loop-group"
+  ],
+  "license": "PolyForm-NC-1.0",
+  "requires": {
+    "gstreamer": ">=1.18",
+    "elements": [
+      {
+        "name": "srtsrc",
+        "rationale": "SRT MPEG-TS input. May need gst-plugins-bad on some distros."
+      },
+      "tsdemux",
+      "h264parse",
+      "aacparse",
+      "tee",
+      "queue",
+      "flvmux",
+      {
+        "name": "rtmp2sink",
+        "rationale": "Modern RTMP sink. Pre-1.18 builds may only ship rtmpsink."
+      }
+    ]
+  },
+  "pipelines": [
+    {
+      "file": "pipelines/srt-multi-rtmp.json",
+      "name": "SRT → Multi RTMP"
+    }
+  ],
+  "variables": [
+    {
+      "varName": "srt_uri",
+      "label": "SRT Port",
+      "description": "TCP port the SRT listener binds on (0.0.0.0). The pipeline includes a Concat transform that assembles the full srt:// URI from this port.",
+      "default": 5000
+    }
+  ]
+}

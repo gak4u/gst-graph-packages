@@ -28,6 +28,10 @@
     {
       "id": "screen-record-windows",
       "path": "packages/screen-record-windows"
+    },
+    {
+      "id": "srt-multi-rtmp",
+      "path": "packages/srt-multi-rtmp"
     }
   ]
 }

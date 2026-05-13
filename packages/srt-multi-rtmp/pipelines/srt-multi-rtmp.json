@@ -1,0 +1,537 @@
+{
+  "id": "pl_package",
+  "name": "SRT → Multi RTMP",
+  "nodes": [
+    {
+      "id": "v_b84pi41w",
+      "type": "gstVariable",
+      "position": {
+        "x": -98.57962468562303,
+        "y": -114.13081218333996
+      },
+      "data": {
+        "varName": "srt_uri",
+        "label": "SRT Port",
+        "valueKind": "number",
+        "value": 5000,
+        "description": "TCP port the SRT listener binds on (0.0.0.0)."
+      },
+      "measured": {
+        "width": 220,
+        "height": 100
+      },
+      "dragging": false
+    },
+    {
+      "id": "n_82rpxktx",
+      "type": "gstElement",
+      "position": {
+        "x": 266.0768212882172,
+        "y": -3.7282228334248373
+      },
+      "data": {
+        "elementName": "srtsrc",
+        "instanceName": "srtsrc0",
+        "properties": {
+          "uri": null
+        },
+        "showBindings": false
+      },
+      "measured": {
+        "width": 200,
+        "height": 116
+      },
+      "dragging": false
+    },
+    {
+      "id": "n_xtacq1hk",
+      "type": "gstElement",
+      "position": {
+        "x": 506.4814814814815,
+        "y": 65.50925925925927
+      },
+      "data": {
+        "elementName": "tsdemux",
+        "instanceName": "tsdemux0",
+        "properties": {}
+      },
+      "measured": {
+        "width": 279,
+        "height": 131
+      },
+      "dragging": false
+    },
+    {
+      "id": "n_p8d86u51",
+      "type": "gstElement",
+      "position": {
+        "x": 819.2254949737039,
+        "y": -8.144261816727344
+      },
+      "data": {
+        "elementName": "h264parse",
+        "instanceName": "h264parse0",
+        "properties": {
+          "config-interval": -1
+        }
+      },
+      "measured": {
+        "width": 200,
+        "height": 71
+      },
+      "dragging": false
+    },
+    {
+      "id": "n_fg9lhol8",
+      "type": "gstElement",
+      "position": {
+        "x": 778.671291185599,
+        "y": 280.13331284815473
+      },
+      "data": {
+        "elementName": "aacparse",
+        "instanceName": "aacparse0",
+        "properties": {}
+      },
+      "measured": {
+        "width": 200,
+        "height": 71
+      },
+      "dragging": false
+    },
+    {
+      "id": "n_aewwey1i",
+      "type": "gstElement",
+      "position": {
+        "x": 1070.600606018896,
+        "y": 19.543275054726678
+      },
+      "data": {
+        "elementName": "tee",
+        "instanceName": "tee0",
+        "properties": {
+          "allow-not-linked": true
+        }
+      },
+      "measured": {
+        "width": 200,
+        "height": 71
+      },
+      "dragging": false
+    },
+    {
+      "id": "n_njkzpgp9",
+      "type": "gstElement",
+      "position": {
+        "x": 1049.5142414181923,
+        "y": 241.57029055625554
+      },
+      "data": {
+        "elementName": "tee",
+        "instanceName": "tee1",
+        "properties": {
+          "allow-not-linked": true
+        }
+      },
+      "measured": {
+        "width": 200,
+        "height": 71
+      },
+      "dragging": false
+    },
+    {
+      "id": "n_7wmile6j",
+      "type": "gstElement",
+      "position": {
+        "x": 1350.600606018896,
+        "y": 90.55678280549111
+      },
+      "data": {
+        "elementName": "flvmux",
+        "instanceName": "flvmux1",
+        "properties": {
+          "streamable": true
+        }
+      },
+      "measured": {
+        "width": 200,
+        "height": 92
+      }
+    },
+    {
+      "id": "n_xuivyf2h",
+      "type": "gstElement",
+      "position": {
+        "x": 1603.9923179056602,
+        "y": 115.34579189577457
+      },
+      "data": {
+        "elementName": "queue",
+        "instanceName": "queue1",
+        "properties": {
+          "max-size-buffers": 200,
+          "max-size-time": 2000000000,
+          "max-size-bytes": 0
+        }
+      },
+      "measured": {
+        "width": 200,
+        "height": 72
+      },
+      "dragging": false
+    },
+    {
+      "id": "n_kmhljoqb",
+      "type": "gstElement",
+      "position": {
+        "x": 1831.6255542689116,
+        "y": 122.06648490271942
+      },
+      "data": {
+        "elementName": "rtmp2sink",
+        "instanceName": "rtmp2sink1",
+        "properties": {
+          "location": null
+        }
+      },
+      "measured": {
+        "width": 200,
+        "height": 72
+      },
+      "dragging": false
+    },
+    {
+      "id": "v_8yn3tujk",
+      "type": "gstVariable",
+      "position": {
+        "x": 1333.74668983842,
+        "y": -126.25369773610663
+      },
+      "data": {
+        "varName": "rtmp_targets",
+        "label": "RTMP Targets",
+        "valueKind": "record-list",
+        "schema": [
+          {
+            "name": "service",
+            "kind": "variable",
+            "variableRef": "v_drcpxec9"
+          },
+          {
+            "name": "key",
+            "kind": "string"
+          }
+        ],
+        "value": [
+          {
+            "name": "Youtube",
+            "service": "Youtube",
+            "key": ""
+          }
+        ]
+      },
+      "measured": {
+        "width": 220,
+        "height": 103
+      },
+      "dragging": false
+    },
+    {
+      "id": "n_ueoiylmq",
+      "type": "gstElement",
+      "position": {
+        "x": 1130.600606018896,
+        "y": 30.55678280549111
+      },
+      "data": {
+        "elementName": "queue",
+        "instanceName": "queue_v",
+        "properties": {
+          "max-size-buffers": 200,
+          "max-size-time": 2000000000,
+          "max-size-bytes": 0
+        }
+      },
+      "measured": {
+        "width": 200,
+        "height": 72
+      }
+    },
+    {
+      "id": "n_1jekfvcv",
+      "type": "gstElement",
+      "position": {
+        "x": 1130.600606018896,
+        "y": 150.5567828054911
+      },
+      "data": {
+        "elementName": "queue",
+        "instanceName": "queue_a",
+        "properties": {
+          "max-size-buffers": 200,
+          "max-size-time": 2000000000,
+          "max-size-bytes": 0
+        }
+      },
+      "measured": {
+        "width": 200,
+        "height": 72
+      }
+    },
+    {
+      "id": "v_drcpxec9",
+      "type": "gstVariable",
+      "position": {
+        "x": 1088.060353008138,
+        "y": -125.83384155561305
+      },
+      "data": {
+        "varName": "endpoints",
+        "valueKind": "kv",
+        "value": {
+          "Youtube": "rtmp://a.rtmp.youtube.com/live2/",
+          "Twitch": "rtmp://live.twitch.tv/app/",
+          "Facebook": "rtmps://live-api-s.facebook.com:443/rtmp/"
+        },
+        "label": "Streaming Services"
+      },
+      "measured": {
+        "width": 220,
+        "height": 103
+      },
+      "dragging": false
+    },
+    {
+      "id": "g_ptqyns1t",
+      "type": "gstGroup",
+      "position": {
+        "x": 1401.9002715166123,
+        "y": 53.08219306013672
+      },
+      "data": {
+        "groupId": "g_ptqyns1t"
+      },
+      "measured": {
+        "width": 252,
+        "height": 121
+      },
+      "dragging": false
+    },
+    {
+      "id": "t_dpladay6",
+      "type": "gstTransform",
+      "position": {
+        "x": 276.0223242496457,
+        "y": -185.68634935413414
+      },
+      "data": {
+        "kind": "concat",
+        "inputs": [
+          {
+            "id": "i_va690",
+            "name": "a"
+          }
+        ],
+        "expression": "srt://0.0.0.0:${a}?mode=listener"
+      },
+      "measured": {
+        "width": 247,
+        "height": 173
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_382xm9ku",
+      "source": "n_82rpxktx",
+      "target": "n_xtacq1hk",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "edgeKind": "stream",
+        "sourcePad": "src",
+        "targetPad": "sink"
+      }
+    },
+    {
+      "id": "e_uem2z7oq",
+      "source": "n_xtacq1hk",
+      "target": "n_p8d86u51",
+      "sourceHandle": "src:video_%01x_%05x",
+      "targetHandle": "sink:sink",
+      "data": {
+        "edgeKind": "stream",
+        "sourcePad": "video_%01x_%05x",
+        "targetPad": "sink"
+      }
+    },
+    {
+      "id": "e_663l5j2m",
+      "source": "n_xtacq1hk",
+      "target": "n_fg9lhol8",
+      "sourceHandle": "src:audio_%01x_%05x",
+      "targetHandle": "sink:sink",
+      "data": {
+        "edgeKind": "stream",
+        "sourcePad": "audio_%01x_%05x",
+        "targetPad": "sink"
+      }
+    },
+    {
+      "id": "e_hli6iwea",
+      "source": "n_p8d86u51",
+      "target": "n_aewwey1i",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "edgeKind": "stream",
+        "sourcePad": "src",
+        "targetPad": "sink"
+      }
+    },
+    {
+      "id": "e_mjinknul",
+      "source": "n_fg9lhol8",
+      "target": "n_njkzpgp9",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "edgeKind": "stream",
+        "sourcePad": "src",
+        "targetPad": "sink"
+      }
+    },
+    {
+      "id": "e_awrtqyk1",
+      "source": "n_7wmile6j",
+      "target": "n_xuivyf2h",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "edgeKind": "stream",
+        "sourcePad": "src",
+        "targetPad": "sink"
+      }
+    },
+    {
+      "id": "e_9t0gga8d",
+      "source": "n_xuivyf2h",
+      "target": "n_kmhljoqb",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:sink",
+      "data": {
+        "edgeKind": "stream",
+        "sourcePad": "src",
+        "targetPad": "sink"
+      }
+    },
+    {
+      "id": "e_resdk8qr",
+      "source": "n_aewwey1i",
+      "target": "g_ptqyns1t",
+      "sourceHandle": "src:src_%u",
+      "targetHandle": "sink:n_ueoiylmq_sink",
+      "data": {
+        "edgeKind": "stream",
+        "targetPad": "sink"
+      }
+    },
+    {
+      "id": "e_wvks6udq",
+      "source": "n_njkzpgp9",
+      "target": "g_ptqyns1t",
+      "sourceHandle": "src:src_%u",
+      "targetHandle": "sink:n_1jekfvcv_sink",
+      "data": {
+        "edgeKind": "stream",
+        "targetPad": "sink"
+      }
+    },
+    {
+      "id": "e_sj4av36t",
+      "source": "n_ueoiylmq",
+      "target": "n_7wmile6j",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:video",
+      "data": {
+        "edgeKind": "stream",
+        "sourcePad": "src",
+        "targetPad": "video"
+      }
+    },
+    {
+      "id": "e_7qnec1r2",
+      "source": "n_1jekfvcv",
+      "target": "n_7wmile6j",
+      "sourceHandle": "src:src",
+      "targetHandle": "sink:audio",
+      "data": {
+        "edgeKind": "stream",
+        "sourcePad": "src",
+        "targetPad": "audio"
+      }
+    },
+    {
+      "id": "e_95kswllx",
+      "source": "v_b84pi41w",
+      "target": "t_dpladay6",
+      "sourceHandle": "out",
+      "targetHandle": "in:i_va690",
+      "data": {
+        "edgeKind": "value",
+        "transformInputId": "i_va690"
+      },
+      "className": "binding",
+      "animated": true
+    },
+    {
+      "id": "e_ixqrgcek",
+      "source": "t_dpladay6",
+      "target": "n_82rpxktx",
+      "sourceHandle": "out",
+      "targetHandle": "prop:uri",
+      "data": {
+        "edgeKind": "binding",
+        "bindingProperty": "uri"
+      },
+      "className": "binding",
+      "animated": true
+    }
+  ],
+  "groups": [
+    {
+      "id": "g_ptqyns1t",
+      "name": "RTMP Publisher",
+      "memberNodeIds": [
+        "n_ueoiylmq",
+        "n_1jekfvcv",
+        "n_7wmile6j",
+        "n_xuivyf2h",
+        "n_kmhljoqb"
+      ],
+      "iteratorVarId": "v_8yn3tujk",
+      "parameters": [
+        {
+          "targetNodeId": "n_kmhljoqb",
+          "propertyKey": "location",
+          "template": "${service}${key}"
+        }
+      ],
+      "boundary": [
+        {
+          "handleId": "sink:n_ueoiylmq_sink",
+          "direction": "sink",
+          "memberNodeId": "n_ueoiylmq",
+          "memberPadName": "sink"
+        },
+        {
+          "handleId": "sink:n_1jekfvcv_sink",
+          "direction": "sink",
+          "memberNodeId": "n_1jekfvcv",
+          "memberPadName": "sink"
+        }
+      ]
+    }
+  ]
+}
